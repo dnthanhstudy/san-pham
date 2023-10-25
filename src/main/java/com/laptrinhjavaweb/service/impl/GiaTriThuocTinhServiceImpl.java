@@ -10,6 +10,9 @@ import com.laptrinhjavaweb.entity.GiaTriThuocTinhEntity;
 import com.laptrinhjavaweb.repository.GiaTriThuocTinhRepository;
 import com.laptrinhjavaweb.service.IGiaTriThuocTinhService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class GiaTriThuocTinhServiceImpl implements IGiaTriThuocTinhService {
 
@@ -21,12 +24,17 @@ public class GiaTriThuocTinhServiceImpl implements IGiaTriThuocTinhService {
 
 	@Override
 	@Transactional
-	public GiaTriThuocTinhDTO save(GiaTriThuocTinhDTO giaTriThuocTinhDTO) {
-		GiaTriThuocTinhEntity giaTriThuocTinhEntity = giaTriThuocTinhConvert.convertToEntity(giaTriThuocTinhDTO);
-		giaTriThuocTinhRepository.save(giaTriThuocTinhEntity);
-		giaTriThuocTinhDTO.setId(giaTriThuocTinhEntity.getId());
-		return giaTriThuocTinhDTO;
+	public List<GiaTriThuocTinhDTO> save(List<GiaTriThuocTinhDTO> giaTriThuocTinhsDTO) {
 
+		List<GiaTriThuocTinhDTO> results = giaTriThuocTinhsDTO.stream().map(
+				item -> {
+					GiaTriThuocTinhEntity giaTriThuocTinhEntity = giaTriThuocTinhConvert.convertToEntity(item);
+					giaTriThuocTinhRepository.save(giaTriThuocTinhEntity);
+					item.setId(giaTriThuocTinhEntity.getId());
+					return item;
+				}
+		).collect(Collectors.toList());
+		return results;
 	}
 
 }

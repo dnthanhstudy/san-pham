@@ -2,7 +2,9 @@ package com.laptrinhjavaweb.service;
 
 import com.laptrinhjavaweb.dto.GiaTriThuocTinhDTO;
 
+import java.util.List;
+
 public interface IGiaTriThuocTinhService {
 
-	GiaTriThuocTinhDTO save(GiaTriThuocTinhDTO giaTriThuocTinhDTO);
+	List<GiaTriThuocTinhDTO> save(List<GiaTriThuocTinhDTO> giaTriThuocTinhsDTO);
 }

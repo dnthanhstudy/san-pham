@@ -1,6 +1,7 @@
 package com.laptrinhjavaweb.dto;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class SanPhamDTO extends AbstractDTO<SanPhamDTO>{
 
@@ -26,9 +27,11 @@ public class SanPhamDTO extends AbstractDTO<SanPhamDTO>{
 	
     private String thuonghieuslug;
     
-    private LinkedHashMap<String , Object> thuoctinh;
+    private List<ThuocTinhDTO> thuoctinh;
     
-    private LinkedHashMap<String , Object> bienthe;
+    private List<BienTheDTO> bienthe;
+
+    private List<SanPhamHinhAnhDTO> sanphamhinhanh;
 
 	public String getSlug() {
 		return slug;
@@ -118,19 +121,27 @@ public class SanPhamDTO extends AbstractDTO<SanPhamDTO>{
 		this.thuonghieuslug = thuonghieuslug;
 	}
 
-	public LinkedHashMap<String, Object> getThuoctinh() {
+	public List<ThuocTinhDTO> getThuoctinh() {
 		return thuoctinh;
 	}
 
-	public void setThuoctinh(LinkedHashMap<String, Object> thuoctinh) {
+	public void setThuoctinh(List<ThuocTinhDTO> thuoctinh) {
 		this.thuoctinh = thuoctinh;
 	}
 
-	public LinkedHashMap<String, Object> getBienthe() {
+	public List<BienTheDTO> getBienthe() {
 		return bienthe;
 	}
 
-	public void setBienthe(LinkedHashMap<String, Object> bienthe) {
+	public void setBienthe(List<BienTheDTO> bienthe) {
 		this.bienthe = bienthe;
+	}
+
+	public List<SanPhamHinhAnhDTO> getSanphamhinhanh() {
+		return sanphamhinhanh;
+	}
+
+	public void setSanphamhinhanh(List<SanPhamHinhAnhDTO> sanphamhinhanh) {
+		this.sanphamhinhanh = sanphamhinhanh;
 	}
 }

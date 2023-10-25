@@ -14,7 +14,7 @@ $(".input-name-atrribute").on("keypress", function (e) {
                 valueAttributes.push({
                     slug: slugAttribute,
                     ten: nameAttribute,
-                    giatri: [],
+                    giatris: [],
                 });
 
                 const eleDivProductsHasAtributes = $(
@@ -68,7 +68,7 @@ $(".card-body:first").on("click", function (e) {
                         const res = findBySlug(slugCurrent);
                         eleClick.parent().prev().append(eleValueAttr);
 
-                        res.giatri.push(valueAttr);
+                        res.giatris.push(valueAttr);
                         generateValueAttr();
                     }
                 }
@@ -108,9 +108,9 @@ $(".card-body:first").on("click", function (e) {
                 } else {
                     eleClick.remove();
                 }
-                let giatris = ele.giatri;
-                giatris = giatris.filter((val) => val !== valueRemove);
-                ele.giatri = giatris;
+                let giatrithuoctinh = ele.giatris;
+                giatrithuoctinh = giatrithuoctinh.filter((val) => val !== valueRemove);
+                ele.giatris = giatrithuoctinh;
             }
             generateValueAttr();
             messageNotication("Xóa thành công", "rgb(3, 138, 255)");
@@ -128,7 +128,7 @@ function findBySlug(slug) {
 // Function check value inside element attributes exsits
 function checkValuExsits(slug, value) {
     const ele = findBySlug(slug);
-    return ele.giatri.find((val) => {
+    return ele.giatris.find((val) => {
         return val.toLowerCase() === value.toLowerCase();
     });
 }
@@ -151,7 +151,7 @@ function generateValueAttr() {
         let attributename = ele.ten;
         attributenames.push(attributename);
         let attributevalue = [];
-        ele.giatri.forEach((val) => {
+        ele.giatris.forEach((val) => {
             attributevalue.push(val);
         });
         attributes[attributename] = attributevalue;

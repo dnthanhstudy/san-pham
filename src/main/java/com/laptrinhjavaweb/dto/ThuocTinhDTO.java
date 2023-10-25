@@ -1,5 +1,7 @@
 package com.laptrinhjavaweb.dto;
 
+import java.util.List;
+
 public class ThuocTinhDTO extends AbstractDTO<ThuocTinhDTO> {
 
 	private String slug;
@@ -7,6 +9,8 @@ public class ThuocTinhDTO extends AbstractDTO<ThuocTinhDTO> {
 	private String ten;
 	
 	private Long sanphamid;
+
+	private List<String> giatris;
 
 	public String getSlug() {
 		return slug;
@@ -30,5 +34,13 @@ public class ThuocTinhDTO extends AbstractDTO<ThuocTinhDTO> {
 
 	public void setSanphamid(Long sanphamid) {
 		this.sanphamid = sanphamid;
+	}
+
+	public List<String> getGiatris() {
+		return giatris;
+	}
+
+	public void setGiatris(List<String> giatris) {
+		this.giatris = giatris;
 	}
 }
