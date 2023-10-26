@@ -9,7 +9,9 @@ import com.laptrinhjavaweb.entity.GiaTriThuocTinhBienTheEntity;
 import com.laptrinhjavaweb.entity.GiaTriThuocTinhEntity;
 import com.laptrinhjavaweb.repository.BienTheRepository;
 import com.laptrinhjavaweb.repository.GiaTriThuocTinhRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GiaTriThuocTinhBienTheConverter {
 	
 	@Autowired
@@ -28,6 +30,13 @@ public class GiaTriThuocTinhBienTheConverter {
 		entity.setGiatrithuoctinhs(giaTriThuocTinhEntity);
 		entity.setBienthes(bienTheEntity);
 		return entity;
+	}
+
+	public GiaTriThuocTinhBienTheDTO convertToDTO(GiaTriThuocTinhBienTheEntity entity){
+		GiaTriThuocTinhBienTheDTO dto = modelMapper.map(entity, GiaTriThuocTinhBienTheDTO.class);
+		dto.setBientheid(entity.getBienthes().getId());
+		dto.setGiatrithuoctinhid(entity.getGiatrithuoctinhs().getId());
+		return dto;
 	}
 
 }

@@ -31,4 +31,11 @@ public class GiaTriThuocTinhConverter {
 		entity.setThuoctinhs(thuocTinhEntity);
 		return entity;
 	}
+	
+	public GiaTriThuocTinhDTO convertToDTO(GiaTriThuocTinhEntity entity) {
+		GiaTriThuocTinhDTO dto = modelMapper.map(entity, GiaTriThuocTinhDTO.class);
+		dto.setThuoctinhid(entity.getThuoctinhs().getId());
+		dto.setSanphamid(entity.getSanphams().getId());
+		return dto;
+	}
 }

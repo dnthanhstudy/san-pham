@@ -1,5 +1,7 @@
 package com.laptrinhjavaweb.dto;
 
+import java.util.List;
+
 public class BienTheDTO extends AbstractDTO<BienTheDTO>{
 
 	private String ten;
@@ -11,6 +13,8 @@ public class BienTheDTO extends AbstractDTO<BienTheDTO>{
 	private String hinhanh;
 
 	private String hinhanhbase64;
+
+	private List<GiaTriThuocTinhBienTheDTO> listGiaTriThuocTinhBienThesDTO;
 
 	public String getTen() {
 		return ten;
@@ -53,5 +57,13 @@ public class BienTheDTO extends AbstractDTO<BienTheDTO>{
 
 	public void setHinhanhbase64(String hinhanhbase64) {
 		this.hinhanhbase64 = hinhanhbase64;
+	}
+
+	public List<GiaTriThuocTinhBienTheDTO> getListGiaTriThuocTinhBienThesDTO() {
+		return listGiaTriThuocTinhBienThesDTO;
+	}
+
+	public void setListGiaTriThuocTinhBienThesDTO(List<GiaTriThuocTinhBienTheDTO> listGiaTriThuocTinhBienThesDTO) {
+		this.listGiaTriThuocTinhBienThesDTO = listGiaTriThuocTinhBienThesDTO;
 	}
 }

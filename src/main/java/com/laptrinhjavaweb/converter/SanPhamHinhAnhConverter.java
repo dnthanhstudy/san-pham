@@ -24,4 +24,10 @@ public class SanPhamHinhAnhConverter {
 		entity.setSanphams(sanPhamEntity);
 		return entity;
 	}
+	
+	public SanPhamHinhAnhDTO convertToDTO(SanPhamHinhAnhEntity entity) {
+		SanPhamHinhAnhDTO dto = modelMapper.map(entity, SanPhamHinhAnhDTO.class);
+		dto.setSanphamid(entity.getSanphams().getId());
+		return dto;
+	}
 }

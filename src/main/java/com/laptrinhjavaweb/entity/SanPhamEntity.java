@@ -174,4 +174,12 @@ public class SanPhamEntity extends BaseEntity {
 	public void setBienTheEntities(List<BienTheEntity> bienTheEntities) {
 		this.bienTheEntities = bienTheEntities;
 	}
+
+	public List<SanPhamHinhAnhEntity> getSanPhamHinhAnhEntities() {
+		return sanPhamHinhAnhEntities;
+	}
+
+	public void setSanPhamHinhAnhEntities(List<SanPhamHinhAnhEntity> sanPhamHinhAnhEntities) {
+		this.sanPhamHinhAnhEntities = sanPhamHinhAnhEntities;
+	}
 }

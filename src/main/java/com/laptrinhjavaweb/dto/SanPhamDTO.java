@@ -1,6 +1,5 @@
 package com.laptrinhjavaweb.dto;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class SanPhamDTO extends AbstractDTO<SanPhamDTO>{
@@ -32,6 +31,8 @@ public class SanPhamDTO extends AbstractDTO<SanPhamDTO>{
     private List<BienTheDTO> bienthe;
 
     private List<SanPhamHinhAnhDTO> sanphamhinhanh;
+    
+
 
 	public String getSlug() {
 		return slug;

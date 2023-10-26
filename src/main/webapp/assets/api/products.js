@@ -16,7 +16,7 @@ $(".btn-add-product").on("click", function (event) {
         dataType: "json",
         data: JSON.stringify(data),
         success: (response) => {
-
+            messageNotication(createdProductSuccess, "#1E90FF");
         },
         error: (error) => {
             console.log(error);

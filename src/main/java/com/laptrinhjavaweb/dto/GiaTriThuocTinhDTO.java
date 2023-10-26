@@ -9,6 +9,8 @@ public class GiaTriThuocTinhDTO extends AbstractDTO<GiaTriThuocTinhDTO> {
 	private Long thuoctinhid;
 	
 	private List<String> giatris;
+	
+	private String giatri;
 
 	public Long getSanphamid() {
 		return sanphamid;
@@ -32,5 +34,13 @@ public class GiaTriThuocTinhDTO extends AbstractDTO<GiaTriThuocTinhDTO> {
 
 	public void setGiatris(List<String> giatris) {
 		this.giatris = giatris;
+	}
+
+	public String getGiatri() {
+		return giatri;
+	}
+
+	public void setGiatri(String giatri) {
+		this.giatri = giatri;
 	}
 }

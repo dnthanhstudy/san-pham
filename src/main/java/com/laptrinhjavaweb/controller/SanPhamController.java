@@ -10,4 +10,9 @@ public class SanPhamController {
     public String assgimentProducts(){
         return "product-has-attribute";
     }
+
+    @GetMapping("/sanphams/{slug}")
+    public String detail(){
+        return "detail";
+    }
 }

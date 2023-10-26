@@ -190,5 +190,11 @@ function generateValueAttr() {
     }
 }
 
+$("#ten").keyup(function () {
+    const name = $(this).val();
+    const slug = customNameToSlug(name);
+    $("#slug").val(slug);
+});
+
 
 

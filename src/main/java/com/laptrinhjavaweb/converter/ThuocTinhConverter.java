@@ -1,10 +1,10 @@
 package com.laptrinhjavaweb.converter;
 
-import com.laptrinhjavaweb.dto.GiaTriThuocTinhDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.laptrinhjavaweb.dto.GiaTriThuocTinhDTO;
 import com.laptrinhjavaweb.dto.ThuocTinhDTO;
 import com.laptrinhjavaweb.entity.SanPhamEntity;
 import com.laptrinhjavaweb.entity.ThuocTinhEntity;
@@ -26,8 +26,14 @@ public class ThuocTinhConverter {
 		return entity;
 	}
 
-	public GiaTriThuocTinhDTO convertToGiaTriThuocTinhDTo(ThuocTinhDTO dto){
+	public GiaTriThuocTinhDTO convertToGiaTriThuocTinhDTO(ThuocTinhDTO dto){
 		GiaTriThuocTinhDTO giaTriThuocTinhDTO = modelMapper.map(dto, GiaTriThuocTinhDTO.class);
 		return giaTriThuocTinhDTO;
+	}
+	
+	public ThuocTinhDTO convertToDTO(ThuocTinhEntity entity) {
+		ThuocTinhDTO dto = modelMapper.map(entity, ThuocTinhDTO.class);
+		dto.setSanphamid(entity.getSanphams().getId());
+		return dto;
 	}
 }

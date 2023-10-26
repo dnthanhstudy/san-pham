@@ -6,4 +6,5 @@ import com.laptrinhjavaweb.entity.SanPhamEntity;
 
 public interface SanPhamRepository extends JpaRepository<SanPhamEntity, Long>{
 
+	SanPhamEntity findBySlug(String slug);
 }

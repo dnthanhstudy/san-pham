@@ -10,9 +10,6 @@ import com.laptrinhjavaweb.entity.ThuocTinhEntity;
 import com.laptrinhjavaweb.repository.ThuocTinhRepository;
 import com.laptrinhjavaweb.service.IThuocTinhService;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
 public class ThuocTinhServiceImpl implements IThuocTinhService {
 
@@ -24,17 +21,11 @@ public class ThuocTinhServiceImpl implements IThuocTinhService {
 
 	@Override
 	@Transactional
-	public List<ThuocTinhDTO> save(List<ThuocTinhDTO> thuocTinhsDTO) {
-		List<ThuocTinhDTO> results = thuocTinhsDTO.stream().map(
-				item -> {
-						ThuocTinhEntity thuocTinhEntity = thuocTinhConvert.convertToEntity(item);
-						thuocTinhRepository.save(thuocTinhEntity);
-						item.setId(thuocTinhEntity.getId());
-						return item;
-				}
-		).collect(Collectors.toList());
-
-		return results;
+	public ThuocTinhDTO save(ThuocTinhDTO thuocTinhDTO) {
+		ThuocTinhEntity thuocTinhEntity = thuocTinhConvert.convertToEntity(thuocTinhDTO);
+		thuocTinhRepository.save(thuocTinhEntity);
+		thuocTinhDTO.setId(thuocTinhEntity.getId());
+		return thuocTinhDTO;
 	}
 
 }

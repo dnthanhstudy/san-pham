@@ -25,6 +25,12 @@ public class BienTheConverter {
 		entity.setSanphams(sanPhamEntity);
 		return entity;
 	}
+	
+	public BienTheDTO convertToDTO(BienTheEntity entity) {
+		BienTheDTO dto = modelMapper.map(entity, BienTheDTO.class);
+		dto.setSanphamid(entity.getSanphams().getId());
+		return dto;
+	}
 
 	public SanPhamHinhAnhEntity convertToSanPhamHinhAnhEntity(BienTheDTO dto){
 		SanPhamHinhAnhEntity entity = modelMapper.map(dto, SanPhamHinhAnhEntity.class);
