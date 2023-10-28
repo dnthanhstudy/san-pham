@@ -31,7 +31,7 @@ public class SanPhamAPI {
 	public ResponseEntity<?> findBySlug(@PathVariable("slug") String slug){
 		SanPhamDTO results = sanPhamService.findBySlug(slug);
 		if(results == null){
-			throw new EntityNotFoundException();
+			throw new EntityNotFoundException("/not-found");
 		}
 		return new ResponseEntity<>(results, HttpStatus.OK);
 	}

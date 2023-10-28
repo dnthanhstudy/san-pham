@@ -7,8 +7,9 @@ function loadProduct(){
         dataType: "json",
         success: (response) => {
             //console.log(response);
+            let col = '';
             $.each(response.data, (index, item) => {
-                let col = ` <div class="col-6">
+                col += ` <div class="col-6">
                             <a href="/sanphams/${item.slug}">
                                 <div class="card" style="width: 18rem;">
                                 <img src="/assets/images/sanphams/${item.sanphamhinhanh[0].hinhanh}" class="card-img-top" alt="...">
@@ -18,22 +19,22 @@ function loadProduct(){
                             </div>
                             </a>                      
                         </div>`;
-                $('#san-pham-trang-chu').append(col);
             })
-            // $("#pagination").twbsPagination({
-            //     first: "First",
-            //     prev: "Previous",
-            //     next: "Next",
-            //     last: "Last",
-            //     visiblePages: 2,
-            //     totalPages: response.meta.totalpage,
-            //     startPage: response.meta.pagefirst,
-            //     onPageClick: function (event, page) {
-            //         event.preventDefault();
-            //         pagecurrent = page;
-            //         loadProduct();
-            //     },
-            // });
+            $('#san-pham-trang-chu').html(col);
+            $("#pagination").twbsPagination({
+                first: "First",
+                prev: "Previous",
+                next: "Next",
+                last: "Last",
+                visiblePages: 2,
+                totalPages: response.meta.totalpage,
+                startPage: response.meta.pagefirst,
+                onPageClick: function (event, page) {
+                    event.preventDefault();
+                    pagecurrent = page;
+                    loadProduct();
+                },
+            });
         },
         error: (error) => {
             console.log(error);

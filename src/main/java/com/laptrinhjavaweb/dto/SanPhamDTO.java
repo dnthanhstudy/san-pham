@@ -32,8 +32,6 @@ public class SanPhamDTO extends AbstractDTO<SanPhamDTO>{
 
     private List<SanPhamHinhAnhDTO> sanphamhinhanh;
     
-
-
 	public String getSlug() {
 		return slug;
 	}

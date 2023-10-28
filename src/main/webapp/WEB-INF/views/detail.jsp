@@ -28,6 +28,8 @@
                 <p class="gia"></p>
                 <div class="thuoc-tinh"></div>
             </div>
+
+            <button class="btn btn-success" type="button">Add giỏ hàng</button>
         </div>
     </div>
     <script

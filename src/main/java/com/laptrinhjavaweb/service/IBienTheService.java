@@ -7,4 +7,6 @@ import com.laptrinhjavaweb.dto.BienTheDTO;
 public interface IBienTheService {
 
 	List<BienTheDTO> save(List<BienTheDTO> bienThesDTO);
+	
+	BienTheDTO findByGiaTriThuocTinh(List<Long> giaTriThuocTinhsId);
 }

@@ -3,11 +3,14 @@ package com.laptrinhjavaweb.converter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.laptrinhjavaweb.dto.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.laptrinhjavaweb.dto.BienTheDTO;
+import com.laptrinhjavaweb.dto.SanPhamDTO;
+import com.laptrinhjavaweb.dto.SanPhamHinhAnhDTO;
+import com.laptrinhjavaweb.dto.ThuocTinhDTO;
 import com.laptrinhjavaweb.entity.DanhMucEntity;
 import com.laptrinhjavaweb.entity.SanPhamEntity;
 import com.laptrinhjavaweb.entity.ThuongHieuEntity;
@@ -30,13 +33,8 @@ public class SanPhamConverter {
     private ThuocTinhConverter thuocTinhConverter;
 
     @Autowired
-    private GiaTriThuocTinhConverter giaTriThuocTinhConvert;
-
-    @Autowired
     private BienTheConverter bienTheConvert;
 
-    @Autowired
-    private GiaTriThuocTinhBienTheConverter giaTriThuocTinhBienTheConverter;
 
     @Autowired
     private SanPhamHinhAnhConverter sanPhamHinhAnhConverter;
@@ -57,17 +55,11 @@ public class SanPhamConverter {
         dto.setThuonghieuslug(entity.getThuonghieus().getSlug());
         List<ThuocTinhDTO> listThuocTinhDTO = entity.getThuocTinhEntities().stream().map(item -> {
             ThuocTinhDTO thuocTinhDTO = thuocTinhConverter.convertToDTO(item);
-            List<GiaTriThuocTinhDTO> listGiaTriThuocTinhDTO = item.getGiaTriThuocTinhEntities().stream().map(
-                    itemGiaTri -> giaTriThuocTinhConvert.convertToDTO(itemGiaTri)).collect(Collectors.toList());
-            thuocTinhDTO.setGiatrithuoctinh(listGiaTriThuocTinhDTO);
             return thuocTinhDTO;
         }).collect(Collectors.toList());
         List<BienTheDTO> listBienTheDTO = entity.getBienTheEntities().stream().map(item -> {
             BienTheDTO bienTheDTO = bienTheConvert.convertToDTO(item);
-            List<GiaTriThuocTinhBienTheDTO> listGiaTriBienTheThuocTinhsDTO = item.getGiaTriThuocTinhBienTheEntities().stream().map(
-                    itemGiaTriBienThe -> giaTriThuocTinhBienTheConverter.convertToDTO(itemGiaTriBienThe)
-            ).collect(Collectors.toList());
-            bienTheDTO.setListGiaTriThuocTinhBienThesDTO(listGiaTriBienTheThuocTinhsDTO);
+            
             return bienTheDTO;
         }).collect(Collectors.toList());
         List<SanPhamHinhAnhDTO> listSanPhamHinhAnhDTO = entity.getSanPhamHinhAnhEntities().stream().map(item ->

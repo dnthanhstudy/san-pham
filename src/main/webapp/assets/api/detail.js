@@ -1,5 +1,9 @@
+const pathNameOfUrl = window.location.pathname;
+const splits = pathNameOfUrl.split('/');
+let slug = splits[splits.length - 1];
+
 $.ajax({
-    url: "/api/sanphams/ao-polo-form-rong-tay-lo-crhsur",
+    url: `/api/sanphams/${slug}`,
     method: "GET",
     dataType: "json",
     success: (response) => {
@@ -11,12 +15,13 @@ $.ajax({
        $.each(response.thuoctinh, (index, item) => {
            let thuoctinh = `<p>${item.ten}</p>`;
            $.each(item.giatrithuoctinh, (idx, it) => {
-               thuoctinh += `<input type="radio"/>${it.giatri}`;
+               thuoctinh += `<input type="radio" value="${it.id}"/>${it.giatri}`;
            })
            $('.thuoc-tinh').append(thuoctinh);
        })
     },
     error: (error) => {
-        console.log(error);
+        //console.log(error);
+        //window.location.href = "/not-found";
     }
 });

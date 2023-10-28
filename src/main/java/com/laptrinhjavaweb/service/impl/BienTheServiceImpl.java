@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.laptrinhjavaweb.entity.SanPhamHinhAnhEntity;
 import com.laptrinhjavaweb.repository.SanPhamHinhAnhRepository;
+import com.laptrinhjavaweb.repository.custom.GiaTriThuocTinhBienTheCustomJDBC;
 import com.laptrinhjavaweb.utils.UploadFileUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class BienTheServiceImpl implements IBienTheService{
 
 	@Autowired
 	private SanPhamHinhAnhRepository sanPhamHinhAnhRepository;
+	
+	@Autowired
+	private GiaTriThuocTinhBienTheCustomJDBC jdbc;
 
 	@Override
 	@Transactional
@@ -67,6 +71,19 @@ public class BienTheServiceImpl implements IBienTheService{
 		}
 		res += ".jpg";
 		return res;
+	}
+
+	@Override
+	public BienTheDTO findByGiaTriThuocTinh(List<Long> giaTriThuocTinhsId) {
+		Long bienTheId = jdbc.findBienThe(giaTriThuocTinhsId);
+		BienTheEntity bienTheEntity = bienTheRepository.findById(bienTheId).get();
+		Integer lenOfServerResponse = giaTriThuocTinhsId.size();
+		Integer lenOfAttribute = bienTheEntity.getSanphams().getThuocTinhEntities().size();
+		if(lenOfAttribute != lenOfServerResponse) {
+			return null;
+		}
+		BienTheDTO bienTheDTO = bienTheConverter.convertToDTO(bienTheEntity);
+		return bienTheDTO;
 	}
 
 }
