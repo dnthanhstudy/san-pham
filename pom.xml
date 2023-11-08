@@ -89,6 +89,12 @@
             <version>2.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>${sitemesh.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
